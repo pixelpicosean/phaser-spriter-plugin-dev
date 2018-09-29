@@ -20,8 +20,52 @@ export const CurveType = {
     bezier: 7,
 }
 
+function validate_data(data) {
+    // Invert the `pivot_y` of each file
+    data.folder.forEach(folder => {
+        folder.file.forEach(file => {
+            file.pivot_y = 1 - file.pivot_y
+        })
+    })
+
+    // Fix timeline keys
+    data.entity.forEach(entity => {
+        entity.animation.forEach(animation => {
+            animation.timeline.forEach(timeline => {
+                timeline.key.forEach(key => {
+                    var obj = key.object
+                    var res = Object.assign({}, obj)
+
+                    // Negative the angle
+                    if (obj.angle !== undefined) {
+                        res.angle = -obj.angle
+                    }
+
+                    // Invert y
+                    if (obj.y !== undefined) {
+                        res.y = -obj.y
+                    }
+
+                    // Override with our new object
+                    key.object = res
+                })
+            })
+        })
+    })
+
+    data.is_validated = true
+}
+
 export class Model {
     constructor(data) {
+        if (!data.is_validated) {
+            console.log('before')
+            console.log(data)
+            validate_data(data)
+            console.log('after')
+            console.log(data)
+        }
+
         /**
          * @type {Array<Folder>}
          */
@@ -428,7 +472,7 @@ export class Obj extends Spatial {
         /**
          * @type {number}
          */
-        this.pivot_y = 1
+        this.pivot_y = 0
 
         /**
          * @type {number}
@@ -442,8 +486,7 @@ export class Obj extends Spatial {
         this.folder = (data.folder !== undefined) ? data.folder : 0
         this.file = (data.file !== undefined) ? data.file : 0
         this.pivot_x = (data.pivot_x !== undefined) ? data.pivot_x : 0
-        this.pivot_y = (data.pivot_y !== undefined) ? data.pivot_y : 1
-        // this.pivot_y = (data.pivot_y !== undefined) ? (1 - data.pivot_y) : 0
+        this.pivot_y = (data.pivot_y !== undefined) ? data.pivot_y : 0
         this.t = (data.t !== undefined) ? data.t : 0
         return this
     }

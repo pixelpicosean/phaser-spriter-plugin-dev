@@ -229,10 +229,10 @@ export default class Animator {
             this.parent.list[i]
                 .setActive(true)
                 .setVisible(true)
-                .setPosition(obj.x, -obj.y)
+                .setPosition(obj.x, obj.y)
                 .setTexture(this.parent.atlas, info.texture)
-                .setOrigin(obj.pivot_x + info.pivot_x, (1 - obj.pivot_y) + (1 - info.pivot_y))
-                .setAngle(-obj.angle)
+                .setOrigin(obj.pivot_x + info.pivot_x, obj.pivot_y + info.pivot_y)
+                .setAngle(obj.angle)
                 .setScale(obj.scale_x, obj.scale_y)
                 .setAlpha(obj.a)
         }
