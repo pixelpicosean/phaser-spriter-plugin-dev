@@ -1,0 +1,294 @@
+{
+	"atlas": [
+		{
+			"name": "rects.json"
+		}
+	],
+	"entity": [
+		{
+			"animation": [
+				{
+					"id": 0,
+					"interval": 10,
+					"length": 1000,
+					"mainline": {
+						"key": [
+							{
+								"bone_ref": [],
+								"id": 0,
+								"object_ref": [
+									{
+										"id": 0,
+										"key": 0,
+										"timeline": "0",
+										"z_index": "0"
+									},
+									{
+										"id": 1,
+										"key": 0,
+										"timeline": "1",
+										"z_index": "1"
+									}
+								]
+							},
+							{
+								"bone_ref": [],
+								"id": 1,
+								"object_ref": [
+									{
+										"id": 0,
+										"key": 1,
+										"timeline": "0",
+										"z_index": "0"
+									},
+									{
+										"id": 1,
+										"key": 0,
+										"timeline": "1",
+										"z_index": "1"
+									}
+								],
+								"time": 350
+							},
+							{
+								"bone_ref": [],
+								"id": 2,
+								"object_ref": [
+									{
+										"id": 0,
+										"key": 1,
+										"timeline": "0",
+										"z_index": "0"
+									},
+									{
+										"id": 1,
+										"key": 1,
+										"timeline": "1",
+										"z_index": "1"
+									}
+								],
+								"time": 500
+							},
+							{
+								"bone_ref": [],
+								"id": 3,
+								"object_ref": [
+									{
+										"id": 0,
+										"key": 1,
+										"timeline": "0",
+										"z_index": "0"
+									},
+									{
+										"id": 1,
+										"key": 1,
+										"timeline": "1",
+										"z_index": "1"
+									},
+									{
+										"id": 2,
+										"key": 0,
+										"timeline": "2",
+										"z_index": "2"
+									}
+								],
+								"time": 660
+							},
+							{
+								"bone_ref": [],
+								"id": 4,
+								"object_ref": [
+									{
+										"id": 0,
+										"key": 1,
+										"timeline": "0",
+										"z_index": "0"
+									},
+									{
+										"id": 1,
+										"key": 1,
+										"timeline": "1",
+										"z_index": "1"
+									},
+									{
+										"id": 2,
+										"key": 1,
+										"timeline": "2",
+										"z_index": "2"
+									}
+								],
+								"time": 980
+							}
+						]
+					},
+					"name": "rotate",
+					"timeline": [
+						{
+							"id": 0,
+							"key": [
+								{
+									"id": 0,
+									"object": {
+										"file": 1,
+										"folder": 0,
+										"x": -1,
+										"y": -2
+									},
+									"spin": -1
+								},
+								{
+									"id": 1,
+									"object": {
+										"angle": 223.45184230102203,
+										"file": 1,
+										"folder": 0,
+										"scale_y": 0.9999999999999998,
+										"x": -1,
+										"y": -2
+									},
+									"time": 350
+								}
+							],
+							"name": "blue",
+							"obj": 0
+						},
+						{
+							"id": 1,
+							"key": [
+								{
+									"id": 0,
+									"object": {
+										"file": 0,
+										"folder": 0,
+										"x": -1,
+										"y": 104
+									},
+									"spin": 0
+								},
+								{
+									"id": 1,
+									"object": {
+										"file": 0,
+										"folder": 0,
+										"scale_x": 4.3076923076923075,
+										"scale_y": 0.6461538461538462,
+										"x": -1,
+										"y": 104
+									},
+									"spin": 0,
+									"time": 500
+								}
+							],
+							"name": "green",
+							"obj": 1
+						},
+						{
+							"id": 2,
+							"key": [
+								{
+									"id": 0,
+									"object": {
+										"file": 2,
+										"folder": 0,
+										"x": 181,
+										"y": 514
+									},
+									"spin": -1,
+									"time": 660
+								},
+								{
+									"id": 1,
+									"object": {
+										"angle": 318.3664606634298,
+										"file": 2,
+										"folder": 0,
+										"scale_x": 0.9999999999999996,
+										"x": 197.99999999999997,
+										"y": 0.9999999999999929
+									},
+									"time": 980
+								}
+							],
+							"name": "red",
+							"obj": 2
+						}
+					]
+				}
+			],
+			"character_map": [],
+			"id": 0,
+			"name": "entity_000",
+			"obj_info": [
+				{
+					"frames": [
+						{
+							"file": 1,
+							"folder": 0
+						}
+					],
+					"name": "entity_000_blue",
+					"realname": "blue",
+					"type": "sprite"
+				},
+				{
+					"frames": [
+						{
+							"file": 0,
+							"folder": 0
+						}
+					],
+					"name": "entity_000_green",
+					"realname": "green",
+					"type": "sprite"
+				},
+				{
+					"frames": [
+						{
+							"file": 2,
+							"folder": 0
+						}
+					],
+					"name": "entity_000_red",
+					"realname": "red",
+					"type": "sprite"
+				}
+			]
+		}
+	],
+	"folder": [
+		{
+			"atlas": 0,
+			"file": [
+				{
+					"height": 64,
+					"id": 0,
+					"name": "rects/green.png",
+					"pivot_x": 0.5,
+					"pivot_y": 0.5,
+					"width": 64
+				},
+				{
+					"height": 64,
+					"id": 1,
+					"name": "rects/blue.png",
+					"pivot_x": 0,
+					"pivot_y": 1,
+					"width": 64
+				},
+				{
+					"height": 64,
+					"id": 2,
+					"name": "rects/red.png",
+					"pivot_x": 0,
+					"pivot_y": 1,
+					"width": 64
+				}
+			],
+			"id": 0,
+			"name": "rects"
+		}
+	],
+	"generator": "BrashMonkey Spriter",
+	"generator_version": "r11",
+	"scon_version": "1.0"
+}

@@ -1,0 +1,132 @@
+{
+	"atlas": [
+		{
+			"name": "rects.json"
+		}
+	],
+	"entity": [
+		{
+			"animation": [
+				{
+					"id": 0,
+					"interval": 10,
+					"length": 1000,
+					"mainline": {
+						"key": [
+							{
+								"bone_ref": [],
+								"id": 0,
+								"object_ref": [
+									{
+										"id": 0,
+										"key": 0,
+										"timeline": "0",
+										"z_index": "0"
+									},
+									{
+										"id": 1,
+										"key": 0,
+										"timeline": "1",
+										"z_index": "1"
+									}
+								]
+							}
+						]
+					},
+					"name": "rotate",
+					"timeline": [
+						{
+							"id": 0,
+							"key": [
+								{
+									"id": 0,
+									"object": {
+										"file": 1,
+										"folder": 0,
+										"x": -1,
+										"y": -2
+									},
+									"spin": 0
+								}
+							],
+							"name": "blue",
+							"obj": 0
+						},
+						{
+							"id": 1,
+							"key": [
+								{
+									"id": 0,
+									"object": {
+										"file": 0,
+										"folder": 0,
+										"x": -1,
+										"y": 104
+									},
+									"spin": 0
+								}
+							],
+							"name": "green",
+							"obj": 1
+						}
+					]
+				}
+			],
+			"character_map": [],
+			"id": 0,
+			"name": "entity_000",
+			"obj_info": [
+				{
+					"frames": [
+						{
+							"file": 1,
+							"folder": 0
+						}
+					],
+					"name": "entity_000_blue",
+					"realname": "blue",
+					"type": "sprite"
+				},
+				{
+					"frames": [
+						{
+							"file": 0,
+							"folder": 0
+						}
+					],
+					"name": "entity_000_green",
+					"realname": "green",
+					"type": "sprite"
+				}
+			]
+		}
+	],
+	"folder": [
+		{
+			"atlas": 0,
+			"file": [
+				{
+					"height": 64,
+					"id": 0,
+					"name": "rects/green.png",
+					"pivot_x": 0.5,
+					"pivot_y": 0.5,
+					"width": 64
+				},
+				{
+					"height": 64,
+					"id": 1,
+					"name": "rects/blue.png",
+					"pivot_x": 0,
+					"pivot_y": 1,
+					"width": 64
+				}
+			],
+			"id": 0,
+			"name": "rects"
+		}
+	],
+	"generator": "BrashMonkey Spriter",
+	"generator_version": "r11",
+	"scon_version": "1.0"
+}
