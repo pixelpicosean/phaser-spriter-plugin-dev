@@ -22,6 +22,7 @@ export default new Phaser.Class({
             .json('test1', 'test1.scon')
             .json('test2', 'test2.scon')
             .json('test3', 'test3.scon')
+            .json('test-bone', 'test-bone.scon')
 
         // Display loading progress
         var game_config = this.game.config
