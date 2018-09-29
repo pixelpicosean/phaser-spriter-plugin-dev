@@ -58,7 +58,6 @@ export default new Phaser.Class({
 
         if (!data[scon]) {
             data[scon] = new Model(this.systems.cache.json.get(scon))
-            console.log(data[scon])
         }
 
         var sprite = new CutoutSprite(this.scene, x, y, data[scon], atlas, entity)

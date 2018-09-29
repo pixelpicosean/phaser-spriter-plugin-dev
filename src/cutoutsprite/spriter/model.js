@@ -33,21 +33,38 @@ function validate_data(data) {
         entity.animation.forEach(animation => {
             animation.timeline.forEach(timeline => {
                 timeline.key.forEach(key => {
-                    var obj = key.object
-                    var res = Object.assign({}, obj)
+                    if (key.hasOwnProperty('object')) {
+                        var obj = key.object
+                        var res = Object.assign({}, obj)
 
-                    // Negative the angle
-                    if (obj.angle !== undefined) {
-                        res.angle = -obj.angle
+                        // Negative the angle
+                        if (obj.angle !== undefined) {
+                            res.angle = -obj.angle * DegToRad
+                        }
+
+                        // Invert y
+                        if (obj.y !== undefined) {
+                            res.y = -obj.y
+                        }
+
+                        // Override with our new object
+                        key.object = res
+                    } else if (key.hasOwnProperty('bone')) {
+                        var obj = key.bone
+                        var res = Object.assign({}, obj)
+
+                        if (obj.angle !== undefined) {
+                            res.angle = obj.angle * DegToRad
+                        }
+
+                        // Invert y
+                        if (obj.y !== undefined) {
+                            res.y = -obj.y
+                        }
+
+                        // Override with our new object
+                        key.bone = res
                     }
-
-                    // Invert y
-                    if (obj.y !== undefined) {
-                        res.y = -obj.y
-                    }
-
-                    // Override with our new object
-                    key.object = res
                 })
             })
         })

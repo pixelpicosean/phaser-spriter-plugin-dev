@@ -1,4 +1,4 @@
-export const PI = 180
+export const PI = Math.PI
 export const PI2 = PI * 2
 
 export const DegToRad = Math.PI / 180
