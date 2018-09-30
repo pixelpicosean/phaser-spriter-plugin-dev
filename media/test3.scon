@@ -323,7 +323,7 @@
 				{
 					"height": 64,
 					"id": 0,
-					"name": "rects/blue.png",
+					"name": "blue.png",
 					"pivot_x": 0,
 					"pivot_y": 1,
 					"width": 64
@@ -331,7 +331,7 @@
 				{
 					"height": 64,
 					"id": 1,
-					"name": "rects/green.png",
+					"name": "green.png",
 					"pivot_x": 0,
 					"pivot_y": 1,
 					"width": 64
@@ -339,7 +339,7 @@
 				{
 					"height": 64,
 					"id": 2,
-					"name": "rects/purple.png",
+					"name": "purple.png",
 					"pivot_x": 0,
 					"pivot_y": 1,
 					"width": 64
@@ -347,7 +347,7 @@
 				{
 					"height": 64,
 					"id": 3,
-					"name": "rects/red.png",
+					"name": "red.png",
 					"pivot_x": 0,
 					"pivot_y": 1,
 					"width": 64
@@ -355,7 +355,7 @@
 				{
 					"height": 64,
 					"id": 4,
-					"name": "rects/white.png",
+					"name": "white.png",
 					"pivot_x": 0,
 					"pivot_y": 1,
 					"width": 64
@@ -363,7 +363,7 @@
 				{
 					"height": 64,
 					"id": 5,
-					"name": "rects/yellow.png",
+					"name": "yellow.png",
 					"pivot_x": 0,
 					"pivot_y": 1,
 					"width": 64
@@ -371,7 +371,7 @@
 				{
 					"height": 64,
 					"id": 6,
-					"name": "rects/blue.png",
+					"name": "blue.png",
 					"pivot_x": 0,
 					"pivot_y": 1,
 					"width": 64

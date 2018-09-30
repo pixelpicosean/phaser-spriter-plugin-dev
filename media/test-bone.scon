@@ -295,7 +295,7 @@
 				{
 					"height": 64,
 					"id": 0,
-					"name": "rects/blue.png",
+					"name": "blue.png",
 					"pivot_x": 0,
 					"pivot_y": 1,
 					"width": 64
@@ -303,7 +303,7 @@
 				{
 					"height": 64,
 					"id": 1,
-					"name": "rects/green.png",
+					"name": "green.png",
 					"pivot_x": 0,
 					"pivot_y": 1,
 					"width": 64
