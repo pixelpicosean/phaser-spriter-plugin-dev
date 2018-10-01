@@ -17,10 +17,10 @@ var CutoutSprite = new Phaser.Class({
         this.time_scale = 1
 
         this.anim = new Pose(model)
-        this.anim.setEntity(entity_name)
+        this.anim.set_current_entity(entity_name)
     },
     play: function(anim) {
-        this.anim.setAnim(anim)
+        this.anim.set_current_anim(anim)
         return this
     },
 
@@ -42,21 +42,9 @@ var CutoutSprite = new Phaser.Class({
         return this.time_scale;
     },
 
-    transition: function(new_anim, transition_time) {
-        this.anim.transition(new_anim, transition_time)
-        return this
-    },
-    blend: function(first_anim, second_anim, factor) {
-        this.anim.blend(first_anim, second_anim, factor)
-        return this
-    },
-
     preUpdate: function(time, delta) {
         this.anim.update(delta * this.time_scale)
         this.anim.strike()
-
-        const entity = this.anim.data.entity_map[this.anim.entity_key]
-        const pos = new Phaser.Geom.Point()
 
         let index = 0
         for (let obj of this.anim.object_array) {
@@ -94,6 +82,7 @@ var CutoutSprite = new Phaser.Class({
                     this.add(this.scene.make.image({ add: false }))
                 }
 
+                const entity = this.anim.data.entity_map[this.anim.entity_key]
                 let bone_info = entity.obj_info_map[bone.name]
                 if (!bone_info) {
                     bone_info = entity.obj_info_map[bone.realname]
