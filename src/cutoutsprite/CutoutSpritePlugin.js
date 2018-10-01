@@ -1,7 +1,4 @@
-import Animator from './spriter/Animator'
-import { Model } from './spriter/model'
-
-import { Data, Pose } from './spriterts/spriter'
+import { Data, Pose } from './spriter/spriter'
 
 var data = {}
 
@@ -15,6 +12,10 @@ var CutoutSprite = new Phaser.Class({
 
         this.atlas = atlas_key
 
+        this.draw_bone = false
+
+        this.time_scale = 1
+
         this.anim = new Pose(model)
         this.anim.setEntity(entity_name)
     },
@@ -22,9 +23,25 @@ var CutoutSprite = new Phaser.Class({
         this.anim.setAnim(anim)
         return this
     },
-    set_speed: function(value) {
-        return this.anim.set_speed(value)
+
+    set_draw_bone: function(value) {
+        this.draw_bone = !!value
     },
+    get_draw_bone: function() {
+        return this.draw_bone
+    },
+
+    set_time_scale: function (value) {
+        if (value === undefined) { value = 1 }
+
+        this.time_scale = value
+
+        return this
+    },
+    get_time_scale: function() {
+        return this.time_scale;
+    },
+
     transition: function(new_anim, transition_time) {
         this.anim.transition(new_anim, transition_time)
         return this
@@ -35,26 +52,31 @@ var CutoutSprite = new Phaser.Class({
     },
 
     preUpdate: function(time, delta) {
-        this.anim.update(delta)
+        this.anim.update(delta * this.time_scale)
         this.anim.strike()
 
         const entity = this.anim.data.entity_map[this.anim.entity_key]
         const pos = new Phaser.Geom.Point()
 
-        var index = 0
-        this.anim.object_array.forEach((obj, i) => {
+        let index = 0
+        for (let obj of this.anim.object_array) {
             if (obj.type === 'sprite') {
                 while (this.list.length <= index) {
                     this.add(this.scene.make.image({ add: false }))
                 }
 
                 const folder = this.anim.data.folder_array[obj.folder_index]
-                if (!folder) { return }
+                if (!folder) {
+                    continue
+                }
                 const file = folder.file_array[obj.file_index]
-                if (!file) { return }
+                if (!file) {
+                    continue
+                }
 
-                var sprt = this.list[index]
-                sprt
+                this.list[index]
+                    .setActive(true)
+                    .setVisible(true)
                     .setPosition(obj.world_space.position.x, obj.world_space.position.y)
                     .setRotation(obj.world_space.rotation.rad)
                     .setScale(obj.world_space.scale.x, obj.world_space.scale.y)
@@ -64,18 +86,41 @@ var CutoutSprite = new Phaser.Class({
 
                 index += 1
             }
-        })
+        }
 
-        // this.anim.bone_array.forEach(b => {
-        //     const bone_info = entity.obj_info_map[this.anim.entity_key + '_' + b.name]
-        //     pos.setTo(bone_info.w, 0)
-        //     Phaser.Math.Rotate(pos, b.world_space.rotation.rad)
+        if (this.draw_bone) {
+            for (let bone of this.anim.bone_array) {
+                while (this.list.length <= index) {
+                    this.add(this.scene.make.image({ add: false }))
+                }
 
-        //     // g.lineStyle(bone_info.h, 0x00FFFF)
-        //     // g.beginPath()
-        //     // g.moveTo(b.world_space.position.x, b.world_space.position.y)
-        //     // g.lineTo(b.world_space.position.x + pos.x, b.world_space.position.y + pos.y)
-        // })
+                let bone_info = entity.obj_info_map[bone.name]
+                if (!bone_info) {
+                    bone_info = entity.obj_info_map[bone.realname]
+                }
+                if (!bone_info) {
+                    continue
+                }
+
+                this.list[index]
+                    .setActive(true)
+                    .setVisible(true)
+                    .setPosition(bone.world_space.position.x, bone.world_space.position.y)
+                    .setRotation(bone.world_space.rotation.rad)
+                    .setTexture('rects', 'red.png')
+                    .setOrigin(0, 0.5)
+                    .setAlpha(1.0)
+                    .setDisplaySize(bone_info.w * bone.world_space.scale.x, bone_info.h * bone.world_space.scale.y)
+
+                index += 1
+            }
+        }
+
+        for (let i = index; i < this.list.length; i++) {
+            this.list[i]
+                .setActive(false)
+                .setVisible(false)
+        }
     },
 
     destroy: function(from_scene) {
@@ -99,25 +144,6 @@ export default new Phaser.Class({
     create_cutout_sprite: function(x, y, scon, atlas, entity) {
         if (!data[scon]) {
             data[scon] = new Data().load(validate_data(this.systems.cache.json.get(scon)))
-        }
-
-        var sprite = new CutoutSprite(this.scene, x, y, data[scon], atlas, entity)
-
-        this.displayList.add(sprite)
-        this.updateList.add(sprite)
-
-        return sprite
-
-
-
-        // ---------------------------------------------------
-
-
-
-        if (entity === undefined) { entity = 0 }
-
-        if (!data[scon]) {
-            data[scon] = new Model(this.systems.cache.json.get(scon))
         }
 
         var sprite = new CutoutSprite(this.scene, x, y, data[scon], atlas, entity)
@@ -167,7 +193,7 @@ function validate_data(data) {
                         var res = Object.assign({}, obj)
 
                         if (obj.angle !== undefined) {
-                            res.angle = obj.angle
+                            res.angle = -obj.angle
                         }
 
                         // Invert y
