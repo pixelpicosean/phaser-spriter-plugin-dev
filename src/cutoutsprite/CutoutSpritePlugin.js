@@ -1,14 +1,10 @@
 import { Data, Pose } from './spriter/spriter'
 
-var data = {}
+const data = {}
 
-var CutoutSprite = new Phaser.Class({
-
-    Extends: Phaser.GameObjects.Container,
-
-    initialize:
-    function CutoutSprite(scene, x, y, model, atlas_key, entity_name) {
-        Phaser.GameObjects.Container.call(this, scene, x, y)
+class CutoutSprite extends Phaser.GameObjects.Container {
+    constructor(scene, x, y, model, atlas_key, entity_name) {
+        super(scene, x, y)
 
         this.atlas = atlas_key
 
@@ -18,31 +14,31 @@ var CutoutSprite = new Phaser.Class({
 
         this.anim = new Pose(model)
         this.anim.set_current_entity(entity_name)
-    },
-    play: function(anim) {
+    }
+    play(anim) {
         this.anim.set_current_anim(anim)
         return this
-    },
+    }
 
-    set_draw_bone: function(value) {
+    set_draw_bone(value) {
         this.draw_bone = !!value
-    },
-    get_draw_bone: function() {
+    }
+    get_draw_bone() {
         return this.draw_bone
-    },
+    }
 
-    set_time_scale: function (value) {
+    set_time_scale (value) {
         if (value === undefined) { value = 1 }
 
         this.time_scale = value
 
         return this
-    },
-    get_time_scale: function() {
-        return this.time_scale;
-    },
+    }
+    get_time_scale() {
+        return this.time_scale
+    }
 
-    preUpdate: function(time, delta) {
+    preUpdate(time, delta) {
         this.anim.update(delta * this.time_scale)
         this.anim.strike()
 
@@ -110,39 +106,37 @@ var CutoutSprite = new Phaser.Class({
                 .setActive(false)
                 .setVisible(false)
         }
-    },
+    }
 
-    destroy: function(from_scene) {
+    destroy(from_scene) {
         this.anim = null
 
         // TODO: recycle child sprites
 
         GameObjects.prototype.destroy.call(this, from_scene)
-    },
-})
+    }
+}
 
-export default new Phaser.Class({
-    Extends: Phaser.Plugins.BasePlugin,
-    initialize:
-    function CutoutSpritePlugin(plugin_manager) {
-        Phaser.Plugins.BasePlugin.call(this, plugin_manager)
+export default class CutoutSpritePlugin extends Phaser.Plugins.BasePlugin {
+    constructor(plugin_manager) {
+        super(plugin_manager)
 
         plugin_manager.registerGameObject('cutout_sprite', this.create_cutout_sprite)
-    },
+    }
 
-    create_cutout_sprite: function(x, y, scon, atlas, entity) {
+    create_cutout_sprite(x, y, scon, atlas, entity) {
         if (!data[scon]) {
             data[scon] = new Data().load(validate_data(this.systems.cache.json.get(scon)))
         }
 
-        var sprite = new CutoutSprite(this.scene, x, y, data[scon], atlas, entity)
+        let sprite = new CutoutSprite(this.scene, x, y, data[scon], atlas, entity)
 
         this.displayList.add(sprite)
         this.updateList.add(sprite)
 
         return sprite
-    },
-})
+    }
+}
 
 function validate_data(data) {
     if (data.is_validated) {
@@ -162,8 +156,8 @@ function validate_data(data) {
             animation.timeline.forEach(timeline => {
                 timeline.key.forEach(key => {
                     if (key.hasOwnProperty('object')) {
-                        var obj = key.object
-                        var res = Object.assign({}, obj)
+                        let obj = key.object
+                        let res = Object.assign({}, obj)
 
                         // Negative the angle
                         if (obj.angle !== undefined) {
@@ -178,8 +172,8 @@ function validate_data(data) {
                         // Override with our new object
                         key.object = res
                     } else if (key.hasOwnProperty('bone')) {
-                        var obj = key.bone
-                        var res = Object.assign({}, obj)
+                        let obj = key.bone
+                        let res = Object.assign({}, obj)
 
                         if (obj.angle !== undefined) {
                             res.angle = -obj.angle
