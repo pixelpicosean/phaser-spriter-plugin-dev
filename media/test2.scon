@@ -9,7 +9,7 @@
 			"animation": [
 				{
 					"id": 0,
-					"interval": 10,
+					"interval": 100,
 					"length": 1000,
 					"mainline": {
 						"key": [
@@ -41,16 +41,15 @@
 								{
 									"id": 0,
 									"object": {
+										"angle": 0,
 										"file": 1,
 										"folder": 0,
-										"x": -1,
-										"y": -2
+										"x": 32
 									},
 									"spin": 0
 								}
 							],
-							"name": "blue",
-							"obj": 0
+							"name": "blue"
 						},
 						{
 							"id": 1,
@@ -58,16 +57,14 @@
 								{
 									"id": 0,
 									"object": {
+										"angle": 0,
 										"file": 0,
-										"folder": 0,
-										"x": -1,
-										"y": 104
+										"folder": 0
 									},
 									"spin": 0
 								}
 							],
-							"name": "green",
-							"obj": 1
+							"name": "green"
 						}
 					]
 				}
@@ -75,30 +72,7 @@
 			"character_map": [],
 			"id": 0,
 			"name": "entity_000",
-			"obj_info": [
-				{
-					"frames": [
-						{
-							"file": 1,
-							"folder": 0
-						}
-					],
-					"name": "entity_000_blue",
-					"realname": "blue",
-					"type": "sprite"
-				},
-				{
-					"frames": [
-						{
-							"file": 0,
-							"folder": 0
-						}
-					],
-					"name": "entity_000_green",
-					"realname": "green",
-					"type": "sprite"
-				}
-			]
+			"obj_info": []
 		}
 	],
 	"folder": [

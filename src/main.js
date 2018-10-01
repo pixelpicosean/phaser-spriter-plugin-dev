@@ -34,8 +34,8 @@ window.onload = function() {
     game = new Phaser.Game({
         type: Phaser.CANVAS,
         canvas: document.getElementById('game'),
-        width: 800,
-        height: 640,
+        width: 400,
+        height: 400,
         plugins: {
             global: [
                 {

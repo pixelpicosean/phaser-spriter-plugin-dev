@@ -4,55 +4,14 @@
         <i name="rects.json"/>
     </atlas>
     <folder id="0" name="rects" atlas="0">
-        <file id="0" name="rects/blue.png" width="64" height="64" pivot_x="0" pivot_y="1"/>
-        <file id="1" name="rects/green.png" width="64" height="64" pivot_x="0" pivot_y="1"/>
-        <file id="2" name="rects/purple.png" width="64" height="64" pivot_x="0" pivot_y="1"/>
-        <file id="3" name="rects/red.png" width="64" height="64" pivot_x="0" pivot_y="1"/>
-        <file id="4" name="rects/white.png" width="64" height="64" pivot_x="0" pivot_y="1"/>
-        <file id="5" name="rects/yellow.png" width="64" height="64" pivot_x="0" pivot_y="1"/>
-        <file id="6" name="rects/blue.png" width="64" height="64" pivot_x="0" pivot_y="1"/>
+        <file id="0" name="blue.png" width="64" height="64" pivot_x="0" pivot_y="1"/>
+        <file id="1" name="green.png" width="64" height="64" pivot_x="0" pivot_y="1"/>
+        <file id="2" name="purple.png" width="64" height="64" pivot_x="0" pivot_y="1"/>
+        <file id="3" name="red.png" width="64" height="64" pivot_x="0" pivot_y="1"/>
+        <file id="4" name="white.png" width="64" height="64" pivot_x="0" pivot_y="1"/>
+        <file id="5" name="yellow.png" width="64" height="64" pivot_x="0" pivot_y="1"/>
     </folder>
     <entity id="0" name="entity_000">
-        <obj_info name="entity_000_blue" realname="blue" type="sprite">
-            <frames>
-                <i folder="0" file="0"/>
-            </frames>
-        </obj_info>
-        <obj_info name="entity_000_green" realname="green" type="sprite">
-            <frames>
-                <i folder="0" file="1"/>
-            </frames>
-        </obj_info>
-        <obj_info name="entity_000_purple" realname="purple" type="sprite">
-            <frames>
-                <i folder="0" file="2"/>
-            </frames>
-        </obj_info>
-        <obj_info name="entity_000_red" realname="red" type="sprite">
-            <frames>
-                <i folder="0" file="3"/>
-            </frames>
-        </obj_info>
-        <obj_info name="entity_000_white" realname="white" type="sprite">
-            <frames>
-                <i folder="0" file="4"/>
-            </frames>
-        </obj_info>
-        <obj_info name="entity_000_yellow" realname="yellow" type="sprite">
-            <frames>
-                <i folder="0" file="5"/>
-            </frames>
-        </obj_info>
-        <obj_info name="entity_000_blue_000" realname="blue_000" type="sprite">
-            <frames>
-                <i folder="0" file="6"/>
-            </frames>
-        </obj_info>
-        <obj_info name="entity_000_green_000" realname="green_000" type="sprite">
-            <frames>
-                <i folder="0" file="1"/>
-            </frames>
-        </obj_info>
         <animation id="0" name="rotate" length="1000" interval="100">
             <mainline>
                 <key id="0">
@@ -66,42 +25,42 @@
                     <object_ref id="7" timeline="7" key="0" z_index="7"/>
                 </key>
             </mainline>
-            <timeline id="0" obj="0" name="blue">
+            <timeline id="0" name="blue">
                 <key id="0" spin="0">
                     <object folder="0" file="0" angle="0"/>
                 </key>
             </timeline>
-            <timeline id="1" obj="1" name="green">
+            <timeline id="1" name="green">
                 <key id="0" spin="0">
                     <object folder="0" file="1" x="103.108808" y="5.699482" angle="350" scale_x="1"/>
                 </key>
             </timeline>
-            <timeline id="2" obj="2" name="purple">
+            <timeline id="2" name="purple">
                 <key id="0" spin="0">
                     <object folder="0" file="2" x="207.253886" y="4.145078" angle="340" scale_x="1" scale_y="1"/>
                 </key>
             </timeline>
-            <timeline id="3" obj="3" name="red">
+            <timeline id="3" name="red">
                 <key id="0" spin="0">
                     <object folder="0" file="3" x="316.062176" y="4.145078" angle="330" scale_x="1" scale_y="1"/>
                 </key>
             </timeline>
-            <timeline id="4" obj="4" name="white">
+            <timeline id="4" name="white">
                 <key id="0" spin="0">
                     <object folder="0" file="4" x="-1.036269" y="-118.65285" angle="10"/>
                 </key>
             </timeline>
-            <timeline id="5" obj="5" name="yellow">
+            <timeline id="5" name="yellow">
                 <key id="0" spin="0">
                     <object folder="0" file="5" x="92.227979" y="-120.207254" angle="20"/>
                 </key>
             </timeline>
-            <timeline id="6" obj="6" name="blue_000">
+            <timeline id="6" name="blue_000">
                 <key id="0" spin="0">
-                    <object folder="0" file="6" x="191.709845" y="-129.533679" angle="30"/>
+                    <object folder="0" file="0" x="191.709845" y="-129.533679" angle="30"/>
                 </key>
             </timeline>
-            <timeline id="7" obj="7" name="green_000">
+            <timeline id="7" name="green_000">
                 <key id="0" spin="0">
                     <object folder="0" file="1" x="292.227979" y="-134.196891" angle="40"/>
                 </key>
