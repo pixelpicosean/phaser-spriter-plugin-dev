@@ -286,11 +286,11 @@ export class Scale extends Vector {
 
 export class Pivot extends Vector {
   constructor() {
-    super(0.0, 1.0);
+    super(0.0, 0.0);
   }
   selfIdentity() {
     this.x = 0.0;
-    this.y = 1.0;
+    this.y = 0.0;
     return this;
   }
 }
@@ -504,7 +504,7 @@ export class ImageFile extends File {
     this.width = loadInt(json, 'width', 0);
     this.height = loadInt(json, 'height', 0);
     this.pivot.x = loadFloat(json, 'pivot_x', 0.0);
-    this.pivot.y = loadFloat(json, 'pivot_y', 1.0);
+    this.pivot.y = loadFloat(json, 'pivot_y', 0.0);
     return this;
   }
 }
@@ -577,7 +577,7 @@ export class SpriteObject extends BaseObject {
     this.world_space.copy(this.local_space);
     if ((typeof(json['pivot_x']) !== 'undefined') || (typeof(json['pivot_y']) !== 'undefined')) {
       this.pivot.x = loadFloat(json, 'pivot_x', 0.0);
-      this.pivot.y = loadFloat(json, 'pivot_y', 1.0);
+      this.pivot.y = loadFloat(json, 'pivot_y', 0.0);
     } else {
       this.default_pivot = true;
     }
@@ -645,7 +645,7 @@ export class BoxObject extends BaseObject {
     this.local_space.load(json);
     this.world_space.copy(this.local_space);
     this.pivot.x = loadFloat(json, 'pivot_x', 0.0);
-    this.pivot.y = loadFloat(json, 'pivot_y', 1.0);
+    this.pivot.y = loadFloat(json, 'pivot_y', 0.0);
     return this;
   }
   copy(other) {
@@ -1901,15 +1901,6 @@ export class Pose {
             Space.combine(bone.world_space, sprite_object.local_space, sprite_object.world_space);
           } else {
             sprite_object.world_space.copy(sprite_object.local_space);
-          }
-          const folder = pose.data.folder_array[sprite_object.folder_index];
-          const file = folder && folder.file_array[sprite_object.file_index];
-          if (file) {
-            const image_file = file;
-            const pivot = (sprite_object.default_pivot) ? image_file.pivot : sprite_object.pivot;
-            const offset_x = (0.5 - pivot.x) * image_file.width;
-            const offset_y = (0.5 - pivot.y) * image_file.height;
-            Space.translate(sprite_object.world_space, offset_x, offset_y);
           }
           break;
         case 'bone': {
