@@ -22,6 +22,17 @@ module.exports = {
                 test: [ /\.vert$/, /\.frag$/ ],
                 use: 'raw-loader',
             },
+            {
+            test: /\.(png|jpg|gif)$/i,
+                use: [
+                    {
+                        loader: 'url-loader',
+                        options: {
+                            limit: 8192,
+                        },
+                    },
+                ],
+            },
         ],
     },
 

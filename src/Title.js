@@ -21,6 +21,7 @@ export default new Phaser.Class({
         this.add.cutout_sprite(x - 130, y, 'player', 'tex', 'Player')
             .play('walk')
             .set_time_scale(0.5)
+            .set_draw_bone(true)
 
         this.add.cutout_sprite(x, y - 10, 'test-bone', 'rects', 'entity_000')
             .play('rotate')

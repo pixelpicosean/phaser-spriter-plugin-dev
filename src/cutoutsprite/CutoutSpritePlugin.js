@@ -1,4 +1,5 @@
 import { Data, Pose } from './spriter/spriter'
+import bone_base64 from './bone.png'
 
 const data = {}
 
@@ -92,10 +93,10 @@ class CutoutSprite extends Phaser.GameObjects.Container {
                     .setVisible(true)
                     .setPosition(bone.world_space.position.x, bone.world_space.position.y)
                     .setRotation(bone.world_space.rotation.rad)
-                    .setTexture('rects', 'red.png')
+                    .setTexture('__BONE')
                     .setOrigin(0, 0.5)
-                    .setAlpha(1.0)
-                    .setDisplaySize(bone_info.w * bone.world_space.scale.x, bone_info.h * bone.world_space.scale.y)
+                    .setAlpha(0.75)
+                    .setScale(bone_info.w / 128 * bone.world_space.scale.x, bone_info.h / 32 * bone.world_space.scale.y)
 
                 index += 1
             }
@@ -122,6 +123,8 @@ export default class CutoutSpritePlugin extends Phaser.Plugins.BasePlugin {
         super(plugin_manager)
 
         plugin_manager.registerGameObject('cutout_sprite', this.create_cutout_sprite)
+
+        plugin_manager.game.textures.addBase64('__BONE', bone_base64)
     }
 
     create_cutout_sprite(x, y, scon, atlas, entity) {
